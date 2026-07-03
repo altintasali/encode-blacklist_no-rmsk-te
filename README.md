@@ -16,7 +16,7 @@ ENCODE_Blacklist_without_RepeatMasker-TE/
 ├── scripts/
 │   ├── filter_blacklist.sh    # Core spatial genomics (bedtools processing)
 │   └── analyze_repeats.R      # R statistical framework & data visualization
-├── data/
+├── data/                      # Ignored at Git Repo, but will be generated when pipeline executed
 │   ├── raw/                   # Input genomic raw source coordinates
 │   │   ├── mm10-blacklist.v2.bed
 │   │   └── rmsk.txt.gz
@@ -34,8 +34,8 @@ ENCODE_Blacklist_without_RepeatMasker-TE/
 │       ├── mm10_TE_pool_horizontal.png   # Comparative composition bars
 │       └── repeat_blacklist_forest_plot.png # Log-scaled forest plot
 └── logs/                      # Execution tracking and environment diagnostics
-    ├── pipeline_execution.log # Full stdout/stderr master execution log
-    └── r_analysis.log         # Dedicated R environment metrics log
+    ├── analyze_repeats.log    # Dedicated R environment metrics log
+    └── pipeline_execution.log # Full stdout/stderr master execution log
 ```
 
 ## 📊 Pipeline Workflow
