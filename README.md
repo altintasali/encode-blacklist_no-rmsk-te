@@ -86,5 +86,3 @@ All metrics and cleaned outputs land directly inside `results/`:
 * **`results/enrichment/mm10_TE_pool_horizontal.png`**: Side-by-side faceted composition plot showing repeat class ratios globally vs. inside the blacklist.
 * **`results/enrichment/repeat_blacklist_forest_plot.png`**: A log-scaled, color-coded forest plot highlighting significant enrichments with explicit text annotations (`OR = ...`).
 
-## 👤 Author
-* **Ali Altintas** * Date: July 2026
