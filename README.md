@@ -76,6 +76,7 @@ To trigger the full spatial subtraction, run statistical profiling, export files
 ```bash
 chmod +x run_pipeline.sh
 ./run_pipeline.sh
+```
 
 ## 📥 Data Outputs
 
