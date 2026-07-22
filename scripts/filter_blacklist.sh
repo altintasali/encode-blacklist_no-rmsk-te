@@ -2,6 +2,15 @@
 
 set -eo pipefail
 
+# ==============================================================================
+# Configuration & Download URLs
+# ==============================================================================
+# Canonical ENCODE mm10 v2 Blacklist (Boyle Lab)
+BLACKLIST_URL="https://github.com/Boyle-Lab/Blacklist/raw/master/lists/mm10-blacklist.v2.bed.gz"
+
+# UCSC RepeatMasker Database Track
+RMSK_URL="http://hgdownload.soe.ucsc.edu/goldenPath/mm10/database/rmsk.txt.gz"
+
 # Define folder targets relative to repo root
 RAW_DIR="data/raw"
 TEMP_DIR="data/process_temp"
@@ -22,18 +31,21 @@ TRAPPED_ALL_RMSK="${TEMP_DIR}/mm10_all-rmsk_trapped_in_blacklist.bed"
 OUTPUT_BLACKLIST_NO_TE="${FILTERED_DIR}/mm10-blacklist.v2_no-TEs.bed"
 OUTPUT_BLACKLIST_NO_RMSK="${FILTERED_DIR}/mm10-blacklist.v2_no-all-rmsk.bed"
 
+# ==============================================================================
+# Execution Pipeline
+# ==============================================================================
 echo "-> Step 1: Checking genomic resources..."
 if [ ! -f "$ORIGINAL_BLACKLIST" ]; then
-    echo "Downloading ENCODE mm10 v2 blacklist..."
-    wget -q --show-progress https://www.encodeproject.org/files/ENCFF547MET/@@download/ENCFF547MET.bed.gz -O ${ORIGINAL_BLACKLIST}.gz
-    gunzip ${ORIGINAL_BLACKLIST}.gz
+    echo "Downloading canonical ENCODE mm10 v2 blacklist..."
+    wget -q --show-progress "$BLACKLIST_URL" -O "${ORIGINAL_BLACKLIST}.gz"
+    gunzip "${ORIGINAL_BLACKLIST}.gz"
 else
-    echo "   Original blacklist found."
+    echo "   Original mm10 v2 blacklist found."
 fi
 
 if [ ! -f "$RMSK_DATA" ]; then
     echo "Downloading mm10 RepeatMasker track from UCSC..."
-    wget -q --show-progress http://hgdownload.soe.ucsc.edu/goldenPath/mm10/database/rmsk.txt.gz -O "$RMSK_DATA"
+    wget -q --show-progress "$RMSK_URL" -O "$RMSK_DATA"
 else
     echo "   RepeatMasker dataset found."
 fi
